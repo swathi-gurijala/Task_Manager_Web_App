@@ -195,3 +195,82 @@ React.js • FastAPI • JWT Authentication
 ✔ Filtering & Search Logic  
 ✔ Responsive UI  
 ✔ Production-Ready Structure  
+
+---
+
+# 📈 Production Scaling & Architecture Note
+
+This application is designed with scalability and production-readiness in mind.
+
+## 🔄 Backend Scalability Plan
+
+For production environments:
+
+- Replace SQLite with **PostgreSQL**
+- Use **environment variables** for secrets and database credentials
+- Deploy backend using:
+  - Render
+  - Railway
+  - Fly.io
+- Enable HTTPS with a reverse proxy (e.g., NGINX)
+- Use Gunicorn + Uvicorn workers for better concurrency
+- Implement database indexing for faster task queries
+
+### Example Production Server Command:
+
+```bash
+gunicorn -k uvicorn.workers.UvicornWorker main:app
+```
+
+---
+
+## 🌐 Frontend Production Setup
+
+For production:
+
+- Build optimized static files:
+
+```bash
+npm run build
+```
+
+- Deploy using:
+  - Vercel
+  - Netlify
+
+- Configure API base URL using environment variables:
+
+```
+REACT_APP_API_URL=https://your-backend-url.com
+```
+
+---
+
+## 🔐 Security Enhancements for Production
+
+- Store JWT secret in environment variables
+- Use HTTPS for secure data transfer
+- Implement refresh tokens
+- Add rate limiting middleware
+- Enable CORS only for allowed domains
+
+---
+
+## 🧱 Architecture Overview
+
+Frontend (React)  
+⬇  
+Axios API Calls  
+⬇  
+FastAPI Backend  
+⬇  
+SQLAlchemy ORM  
+⬇  
+PostgreSQL Database  
+
+This layered architecture ensures:
+
+- Separation of concerns
+- Maintainability
+- Scalability
+- Clean code structure
