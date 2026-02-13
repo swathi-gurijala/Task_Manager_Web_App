@@ -1,70 +1,73 @@
-📌 Task Manager – Full Stack Web Application
+# 🚀 Task Manager – Full Stack Web Application
 
-A modern full-stack Task Manager built using React.js (Frontend) and FastAPI (Backend) with JWT authentication, protected routes, and full CRUD functionality.
+<p align="center">
+  <b>A modern full-stack task management application built with React.js & FastAPI</b><br/>
+  Secure • Responsive • JWT Auth • Production Ready
+</p>
 
-✨ Features
-🔐 Authentication
+---
 
-User Registration
+## 📌 Overview
 
-User Login
+Task Manager is a full-stack web application that allows users to securely manage their daily tasks with authentication, filtering, and responsive UI design.
 
-JWT-based Authentication
+This project demonstrates:
 
-Protected Routes
+- Frontend architecture using **React.js**
+- Backend API development using **FastAPI**
+- JWT-based authentication
+- Full CRUD operations
+- Production-ready project structure
 
-Secure Password Hashing
+---
 
-📋 Task Management
+## ✨ Features
 
-Create Tasks
+### 🔐 Authentication
+- User Registration
+- User Login
+- Secure Password Hashing
+- JWT-based Authentication
+- Protected Routes
+- Token Validation Middleware
 
-Edit Tasks
+---
 
-Delete Tasks
+### 📋 Task Management
+- ✅ Create Tasks  
+- ✏️ Edit Tasks  
+- 🗑 Delete Tasks  
+- 🔄 Toggle Pending / Completed  
+- 🔍 Search by Title & Description  
+- 📅 Filter by Start Date  
+- 📊 Filter by Status (Pending / Completed)  
+- ♻ Reset Filters  
+- 🌙 Dark / Light Mode  
+- 📱 Fully Responsive Design  
 
-Toggle Pending / Completed
+---
 
-Search Tasks (by title & description)
+## 🛠 Tech Stack
 
-Filter by:
+### 🎨 Frontend
+- React.js
+- React Router
+- Axios
+- Toast Notifications
+- Custom Responsive CSS
 
-Status (Pending / Completed)
+### ⚙ Backend
+- FastAPI
+- SQLAlchemy ORM
+- JWT Authentication
+- Password Hashing
+- SQLite (Development Database)
 
-Start Date
+---
 
-Reset Filters
+## 📂 Project Structure
 
-Responsive Task Cards
-
-Dark / Light Mode
-
-🛠 Tech Stack
-Frontend
-
-React.js
-
-React Router
-
-Axios
-
-Toast Notifications
-
-Custom Responsive CSS
-
-Backend
-
-FastAPI
-
-SQLAlchemy
-
-JWT Authentication
-
-Password Hashing
-
-SQLite (Development)
-
-📂 Project Structure
+```
 task-manager/
 │
 ├── backend/
@@ -76,70 +79,119 @@ task-manager/
 │
 ├── frontend/
 │   ├── src/
-│   │   ├── components/ ProtectedRoute.js
-│   │   ├── pages/ Dashborad.jsx, Login.jsx, Register.jsx
+│   │   ├── components/
+│   │   │   └── ProtectedRoute.js
+│   │   ├── pages/
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Login.jsx
+│   │   │   └── Register.jsx
 │   │   ├── api.js
 │   │   └── App.jsx
 │
 └── README.md
+```
 
-⚙️ Installation & Setup
-1️⃣ Backend Setup
+---
+
+## ⚙️ Installation & Setup
+
+### 🔹 Backend Setup
+
+```bash
 cd backend
 python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
+source venv/bin/activate      # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn main:app --reload
+```
 
+Backend runs at:
 
-Backend runs on:
-
+```
 http://localhost:8000
+```
 
-2️⃣ Frontend Setup
+---
+
+### 🔹 Frontend Setup
+
+```bash
 cd frontend
 npm install
 npm start
+```
 
+Frontend runs at:
 
-Frontend runs on:
-
+```
 http://localhost:3000
+```
 
-🔑 Environment Variables (Production Ready Setup)
+---
 
-Create .env file inside backend:
+## 🔑 Environment Variables (Production Ready Setup)
 
+Create a `.env` file inside the backend folder:
+
+```
 SECRET_KEY=your_super_secret_key
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=60
 DATABASE_URL=postgresql://user:password@host:port/dbname
+```
 
-🔒 Security Implemented
+⚠️ Never commit `.env` files to GitHub.
 
-Password hashing
+---
 
-JWT token validation
+## 🔒 Security Implementation
 
-Protected API routes
+- Password hashing before storing in database
+- JWT token generation & validation
+- Protected API routes
+- Middleware-based authentication
+- CORS configuration
+- Secure token handling on frontend
 
-Token-based authentication middleware
+---
 
-CORS configuration
+## 🌍 Production Deployment (Recommended)
 
-🚀 Future Improvements
+### Frontend
+- Deploy using **Vercel** or **Netlify**
 
-Deploy backend with PostgreSQL
+### Backend
+- Deploy using **Render**, **Railway**, or **Fly.io**
+- Use PostgreSQL instead of SQLite
+- Configure environment variables securely
+- Enable HTTPS
 
-Use TailwindCSS for scalable styling
+---
 
-Add Pagination
+## 🚀 Future Improvements
 
-Add Due Date reminders
+- PostgreSQL for production database
+- Pagination for tasks
+- Due date reminders
+- Role-based access control
+- Task categories
+- Email notifications
 
-Add Role-based access control
+---
 
-👩‍💻 Author
+## 👩‍💻 Author
 
-Swathi
-Full Stack Developer (React + FastAPI)
+**Swathi**  
+Full Stack Developer  
+React.js • FastAPI • JWT Authentication  
+
+---
+
+## ⭐ Why This Project Stands Out
+
+✔ Clean Architecture  
+✔ Secure Authentication  
+✔ Full CRUD Implementation  
+✔ Filtering & Search Logic  
+✔ Responsive UI  
+✔ Production-Ready Structure  
