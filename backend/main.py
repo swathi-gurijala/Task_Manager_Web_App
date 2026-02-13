@@ -1,141 +1,131 @@
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import FastAPI, Depends, HTTPException
+from sqlalchemy.orm import Session
+from database import Base, engine, SessionLocal, User, Task
+from schemas import UserCreate, TaskCreate, TaskUpdate
+from auth import hash_password, verify_password, create_access_token, get_current_user, get_db
 from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
-from bson import ObjectId
+from fastapi import APIRouter, Depends
+from auth import get_current_user
+from schemas import UserOut
+from typing import Optional
+from sqlalchemy import or_
 
-from schemas import UserCreate, UserResponse, TaskCreate, TaskResponse
-from auth import hash_password, verify_password, create_access_token, get_current_user
-from database_mongo import users_col, tasks_col
-
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-FRONTEND_URL = os.getenv("FRONTEND_URL")
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# ---------------- CORS ----------------
-origins = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-]
-
+# Allow frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],  # allow localhost
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-
-# ---------------- AUTH ROUTES ----------------
+# -------- AUTH --------
 @app.post("/register")
-def register(user: UserCreate):
-    if users_col.find_one({"email": user.email}):
+def register(user: UserCreate, db: Session = Depends(get_db)):
+    if db.query(User).filter(User.email == user.email).first():
         raise HTTPException(status_code=400, detail="Email already registered")
-    hashed = hash_password(user.password)
-    users_col.insert_one({"email": user.email, "hashed_password": hashed})
-    return {"message": "User registered successfully"}
+    db_user = User(email=user.email, hashed_password=hash_password(user.password))
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    return {"email": db_user.email}
 
 @app.post("/login")
-def login(user: UserCreate):
-    db_user = users_col.find_one({"email": user.email})
-    if not db_user or not verify_password(user.password, db_user["hashed_password"]):
+def login(user: UserCreate, db: Session = Depends(get_db)):
+    db_user = db.query(User).filter(User.email == user.email).first()
+    if not db_user or not verify_password(user.password, db_user.hashed_password):
         raise HTTPException(status_code=401, detail="Invalid credentials")
-    token = create_access_token({"sub": user.email})
-    return {"access_token": token, "token_type": "bearer", "email": user.email}
+    token = create_access_token({"sub": db_user.email})
+    return {"access_token": token, "token_type": "bearer"}
 
-# ---------------- TASK ROUTES ----------------
-# @app.get("/tasks")
-# def get_tasks(current_user=Depends(get_current_user)):
-#     tasks = list(tasks_col.find({"user_email": current_user["email"]}))
-#     for task in tasks:
-#         task["id"] = str(task["_id"])
-#         task["created_at"] = task.get("created_at") or datetime.utcnow()
-#         task["updated_at"] = task.get("updated_at") or datetime.utcnow()
-#     return tasks
-
+# -------- TASKS --------
 @app.get("/tasks")
-def get_tasks(current_user=Depends(get_current_user)):
+def get_tasks(
+    search: Optional[str] = None,
+    status: Optional[str] = None,
+    start_date: Optional[str] = None,
+    end_date: Optional[str] = None,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    query = db.query(Task).filter(Task.user_email == current_user.email)
 
-    tasks = list(tasks_col.find({"user_id": current_user["email"]}))
+    # 🔎 Search in title OR description
+    if search:
+        query = query.filter(
+            or_(
+                Task.title.ilike(f"%{search}%"),
+                Task.description.ilike(f"%{search}%")
+            )
+        )
 
-    formatted_tasks = []
+    # ✅ Filter by status (pending/completed)
+    if status:
+        query = query.filter(Task.status == status.lower())
 
-    for task in tasks:
-        formatted_tasks.append({
-            "id": str(task["_id"]),
-            "title": task.get("title"),
-            "description": task.get("description"),
-            "completed": task.get("completed", False),
-            "created_at": task.get("created_at")
-        })
+    # 📅 Filter by created_at date range
+    if start_date:
+        query = query.filter(Task.created_at >= datetime.fromisoformat(start_date))
 
-    return formatted_tasks
+    if end_date:
+        query = query.filter(Task.created_at <= datetime.fromisoformat(end_date))
 
+    return query.order_by(Task.created_at.desc()).all()
 
 
 @app.post("/tasks")
-def create_task(task: dict, current_user=Depends(get_current_user)):
-
-    task_data = {
-        "title": task.get("title"),
-        "description": task.get("description"),
-        "completed": False,
-        "user_id": current_user["email"],
-        "created_at": datetime.utcnow()
-    }
-
-    result = tasks_col.insert_one(task_data)
-
-    return {
-        "id": str(result.inserted_id),
-        "title": task_data["title"],
-        "description": task_data["description"],
-        "completed": task_data["completed"],
-        "created_at": task_data["created_at"]
-    }
-
-
+def create_task(task: TaskCreate, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    db_task = Task(
+        title=task.title,
+        description=task.description,
+        user_email=current_user.email,
+        created_at=datetime.utcnow(),
+        updated_at=datetime.utcnow(),
+    )
+    db.add(db_task)
+    db.commit()
+    db.refresh(db_task)
+    return db_task
 
 @app.put("/tasks/{task_id}")
-def update_task(task_id: str, updated_data: dict, current_user=Depends(get_current_user)):
-
-    tasks_col.update_one(
-        {"_id": ObjectId(task_id), "user_id": current_user["email"]},
-        {"$set": {
-            "title": updated_data.get("title"),
-            "description": updated_data.get("description")
-        }}
-    )
-
-    return {"message": "Task updated successfully"}
-
-
-@app.put("/tasks/{task_id}/status")
-def toggle_status(task_id: str, current_user=Depends(get_current_user)):
-
-    task = tasks_col.find_one({"_id": ObjectId(task_id)})
-
-    if not task:
-        return {"error": "Task not found"}
-
-    tasks_col.update_one(
-        {"_id": ObjectId(task_id)},
-        {"$set": {"completed": not task["completed"]}}
-    )
-
-    return {"message": "Status updated"}
-
+def update_task(task_id: int, task: TaskUpdate, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    db_task = db.query(Task).filter(Task.id == task_id, Task.user_email == current_user.email).first()
+    if not db_task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    if task.title is not None:
+        db_task.title = task.title
+    if task.description is not None:
+        db_task.description = task.description
+    db_task.updated_at = datetime.utcnow()
+    db.commit()
+    db.refresh(db_task)
+    return db_task
 
 @app.delete("/tasks/{task_id}")
-def delete_task(task_id: str, current_user=Depends(get_current_user)):
+def delete_task(task_id: int, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    db_task = db.query(Task).filter(Task.id == task_id, Task.user_email == current_user.email).first()
+    if not db_task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    db.delete(db_task)
+    db.commit()
+    return {"detail": "Task deleted"}
 
-    tasks_col.delete_one(
-        {"_id": ObjectId(task_id), "user_id": current_user["email"]}
-    )
+@app.put("/tasks/{task_id}/status")
+def toggle_task_status(task_id: int, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    db_task = db.query(Task).filter(Task.id == task_id, Task.user_email == current_user.email).first()
+    if not db_task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    db_task.status = "completed" if db_task.status == "pending" else "pending"
+    db_task.updated_at = datetime.utcnow()
+    db.commit()
+    db.refresh(db_task)
+    return db_task
 
-    return {"message": "Task deleted successfully"}
-
+@app.get("/me", response_model=UserOut)
+def read_current_user(current_user=Depends(get_current_user)):
+    return current_user

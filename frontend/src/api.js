@@ -1,6 +1,5 @@
 const BASE_URL = "http://127.0.0.1:8000";
 
-
 // ---------------- AUTH ----------------
 export async function registerUser(email, password) {
   const response = await fetch(`${BASE_URL}/register`, {
@@ -21,7 +20,7 @@ export async function loginUser(email, password) {
   });
   const data = await response.json();
   if (!response.ok) throw new Error(data.detail || "Login failed");
-  // store email in localStorage for profile
+
   localStorage.setItem("email", email);
   localStorage.setItem("token", data.access_token);
   return data;
@@ -86,6 +85,15 @@ export async function updateTaskStatus(id) {
     method: "PUT",
     headers: authHeader(),
   });
-  if (!res.ok) throw new Error("Failed to update status");
+  if (!res.ok) {
+    const errData = await res.json().catch(() => ({}));
+    throw new Error(errData.detail || "Failed to update status");
+  }
+  return res.json();
+}
+
+export async function getCurrentUser() {
+  const res = await fetch(`${BASE_URL}/me`, { headers: authHeader() });
+  if (!res.ok) throw new Error("Failed to fetch user info");
   return res.json();
 }

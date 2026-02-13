@@ -25,27 +25,39 @@ export default function Register() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h2 style={styles.heading}>Register</h2>
+        <h1 style={styles.mainHeading}>Create Your Account 🚀</h1>
+        <p style={styles.subHeading}>
+          Join us and start organizing your tasks smarter today.
+        </p>
+
         <input
           style={styles.input}
           type="email"
-          placeholder="Email"
+          placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+
         <input
           style={styles.input}
           type="password"
-          placeholder="Password"
+          placeholder="Create a password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button style={styles.button} onClick={handleRegister}>
+
+        <button
+          style={styles.button}
+          onMouseOver={(e) => (e.target.style.backgroundColor = "#2ecc71")}
+          onMouseOut={(e) => (e.target.style.backgroundColor = "#27ae60")}
+          onClick={handleRegister}
+        >
           Register
         </button>
-        <p style={{ color: "#fff", marginTop: "10px" }}>
+
+        <p style={styles.footerText}>
           Already have an account?{" "}
-          <a style={{ color: "#3498db" }} href="/login">
+          <a style={styles.link} href="/login">
             Login
           </a>
         </p>
@@ -54,7 +66,6 @@ export default function Register() {
   );
 }
 
-// --------- Styles ----------
 const styles = {
   container: {
     backgroundColor: "#1e1e2f",
@@ -67,33 +78,51 @@ const styles = {
   card: {
     backgroundColor: "#2c2c3e",
     padding: "40px",
-    borderRadius: "10px",
-    boxShadow: "0px 0px 20px rgba(0,0,0,0.5)",
-    width: "350px",
+    borderRadius: "12px",
+    boxShadow: "0px 0px 25px rgba(0,0,0,0.6)",
+    width: "370px",
     textAlign: "center",
   },
-  heading: {
-    color: "#fff",
-    marginBottom: "20px",
+  mainHeading: {
+    color: "#ffffff",
+    fontSize: "26px",
+    fontWeight: "bold",
+    marginBottom: "8px",
+  },
+  subHeading: {
+    color: "#b0b0c3",
+    fontSize: "14px",
+    marginBottom: "25px",
   },
   input: {
     width: "100%",
     padding: "12px",
     margin: "10px 0",
-    borderRadius: "5px",
+    borderRadius: "6px",
     border: "none",
     outline: "none",
-    fontSize: "16px",
+    fontSize: "15px",
   },
   button: {
     width: "100%",
     padding: "12px",
-    backgroundColor: "#3498db",
+    backgroundColor: "#27ae60",
     color: "#fff",
     border: "none",
-    borderRadius: "5px",
+    borderRadius: "6px",
     cursor: "pointer",
     fontSize: "16px",
-    marginTop: "10px",
+    marginTop: "15px",
+    transition: "0.3s ease",
+  },
+  footerText: {
+    color: "#ffffff",
+    marginTop: "15px",
+    fontSize: "14px",
+  },
+  link: {
+    color: "#3498db",
+    textDecoration: "none",
+    fontWeight: "bold",
   },
 };
