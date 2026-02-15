@@ -80,7 +80,7 @@ This layered architecture ensures:
 - Scalability
 - Clean code structure
 
-![Banner](https://via.placeholder.com/1200x300.png?text=Task+Manager+Web+App)
+![Banner](Images_of_web_app/Dashboard.png)
 
 > **A full-stack web application to manage your tasks efficiently, stay organized, and boost productivity.** 🚀  
 
@@ -134,7 +134,7 @@ This project demonstrates **authentication, CRUD operations, API integration, st
 ## Features & Screenshots 🌟
 
 ### 1️⃣ Login Page
-![Login Page](https://via.placeholder.com/600x400.png?text=Login+Page)
+![Login Page](Images_of_web_app/Login_page.png)
 
 **Features:**
 - Email & password input fields  
@@ -147,7 +147,7 @@ This project demonstrates **authentication, CRUD operations, API integration, st
 ---
 
 ### 2️⃣ Register Page
-![Register Page](https://via.placeholder.com/600x400.png?text=Register+Page)
+![Register Page](Images_of_web_app/Register_page.png)
 
 **Features:**
 - New users can register with email & password  
