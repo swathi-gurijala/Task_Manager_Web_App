@@ -1,4 +1,4 @@
-# 🚀 Task Manager – Full Stack Web Application
+<center> <b>🚀 Task Manager – Full Stack Web Application </b> </center>
 
 <p align="center">
   <b>A modern full-stack task management application built with React.js & FastAPI</b><br/>
@@ -6,7 +6,6 @@
 </p>
 
 ---
-## 🚀 Task Manager Web App
 
 [🌐 **Open Live Web App Here!**](https://task-manager-web-app-jade.vercel.app)  
 
@@ -237,55 +236,83 @@ This project demonstrates **authentication, CRUD operations, API integration, st
 
 ### Clone the repository
 ```bash
+-open command prompt & paste this below command:
+
 git clone https://github.com/swathi-gurijala/Task_Manager_Web_App.git
+
+- Then paste this below one , to go into the project folder:
+
 cd Task_Manager_Web_App
-Backend Setup
+
+## Backend Setup
+
+- Go into the backend folder: 
 cd backend
 python -m venv .venv
+
 # Activate environment
+
 # Windows
 .venv\Scripts\activate
+
 # Linux / Mac
 source .venv/bin/activate
 
+- To install the project requirements into the local environment:
+
 pip install -r requirements.txt
+
+-  To run the backend code:
+
 uvicorn main:app --reload
-Frontend Setup
+
+## Frontend Setup
+
+- Go into the frontend folder:
+
 cd frontend
+
+- Install node modules and other requirments for react frontend:
+
 npm install
+
+- Run the frontend in localhost using this command:
+
 npm run dev
+
 ✅ Open your browser at http://localhost:5173 (or port shown in terminal) to test the app locally.
 
-Challenges & Solutions 💡
-CORS Policy Errors: Added CORSMiddleware to backend
+```
 
-Login delay confusion: Added spinner & “Login in progress” message
+## Challenges & Solutions 💡
 
-404 on page refresh: Added _redirects and vercel.json for proper routing
+*CORS Policy Errors: Added CORSMiddleware to backend**
 
-Bcrypt 72-byte issue: Pinned to bcrypt 4.0.1 for Python 3.12
+*Login delay confusion: Added spinner & “Login in progress” message*
 
-💪 Multiple days of debugging, testing, and deployment improvements went into making this smooth and production-ready.
+*404 on page refresh: Added _redirects and vercel.json for proper routing*
 
-Future Improvements & Plans 🚀
-Task priority & deadlines
+*Bcrypt 72-byte issue: Pinned to bcrypt 4.0.1 for Python 3.12*
 
-Real-time collaboration & shared tasks
+**💪 Multiple days of debugging, testing, and deployment improvements went into making this smooth and production-ready.**
 
-Push notifications for pending tasks
+### Future Improvements & Plans 🚀
 
-Export tasks to PDF / Excel
++ Task priority & deadlines
 
-AI-powered task prioritization suggestions
++ Real-time collaboration & shared tasks
 
-Dark/Light theme toggle
++ Push notifications for pending tasks
 
-Additional analytics & stats for user productivity
++ Export tasks to PDF / Excel
 
-🌟 Open to feature suggestions and contributions from the community.
++ AI-powered task prioritization suggestions
 
-> About the Developer 👩‍💻
-### 👩‍💻 About the Author
++ Additional analytics & stats for user productivity
+
+**🌟 Open to feature suggestions and contributions from the community.**
+
+## About the Developer 👩‍💻
 
 | Name | Swathi Gurijala |
 |------|----------------|
@@ -304,20 +331,20 @@ Additional analytics & stats for user productivity
 
 
 
-“Turning ideas into functional, polished applications with love ❤️ and hard work ☕.”
+**Turning ideas into functional, polished applications with love ❤️ and hard work ☕.**
 
 ### Contributing 🤝
 We welcome contributions!
 
-Fork the repo
+- Fork the repo
 
-Create a feature branch: git checkout -b feature-name
+- Create a feature branch: git checkout -b feature-name
 
-Commit your changes: git commit -m "Add new feature"
+- Commit your changes: git commit -m "Add new feature"
 
-Push to branch: git push origin feature-name
+- Push to branch: git push origin feature-name
 
-Open a Pull Request
+- Open a Pull Request
 
 #### License 📄
 MIT License - see LICENSE for details
