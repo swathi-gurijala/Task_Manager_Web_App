@@ -163,7 +163,7 @@ This project demonstrates **authentication, CRUD operations, API integration, st
 ---
 
 ### 3️⃣ Dashboard
-![Dashboard](https://via.placeholder.com/800x400.png?text=Dashboard+View)
+![Dashboard](Images_of_web_app/Banner_image.png)
 
 **Features:**
 - Lists all tasks in card layout  
