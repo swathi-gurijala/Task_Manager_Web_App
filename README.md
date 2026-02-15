@@ -86,7 +86,7 @@ This layered architecture ensures:
 - Scalability
 - Clean code structure
 
-![Banner](Images_of_web_app/Banner_image.png)
+![Banner](Images_of_web_app/Task_cards.png)
 
 > **A full-stack web application to manage your tasks efficiently, stay organized, and boost productivity.** 🚀  
 
@@ -135,6 +135,7 @@ This project demonstrates **authentication, CRUD operations, API integration, st
 
 ---
 
+
 ## Features & Screenshots 🌟
 
 ### 1️⃣ Login Page
@@ -149,6 +150,7 @@ This project demonstrates **authentication, CRUD operations, API integration, st
 > 💡 The spinner ensures the user knows login is in progress, improving UX and reducing confusion during API response delay.
 
 ---
+
 
 ### 2️⃣ Register Page
 ![Register Page](Images_of_web_app/Register_page.png)
@@ -200,7 +202,7 @@ This project demonstrates **authentication, CRUD operations, API integration, st
 ---
 
 ### 6️⃣ Profile & Logout
-![Profile Page](Images_of_web_app/logout_image.png)
+![Profile Page](Images_of_web_app/Profile_logout.png)
 
 **Features:**
 - Displays user **email and profile info**  
@@ -231,6 +233,7 @@ This project demonstrates **authentication, CRUD operations, API integration, st
 - Backend: Render  
 
 ---
+
 
 ## Installation & Running Locally 🖥️
 
@@ -284,6 +287,8 @@ npm run dev
 
 ```
 
+
+
 ## Challenges & Solutions 💡
 
 *CORS Policy Errors: Added CORSMiddleware to backend**
@@ -294,7 +299,9 @@ npm run dev
 
 *Bcrypt 72-byte issue: Pinned to bcrypt 4.0.1 for Python 3.12*
 
+
 **💪 Multiple days of debugging, testing, and deployment improvements went into making this smooth and production-ready.**
+
 
 ### Future Improvements & Plans 🚀
 
@@ -310,7 +317,9 @@ npm run dev
 
 + Additional analytics & stats for user productivity
 
+
 **🌟 Open to feature suggestions and contributions from the community.**
+
 
 ## About the Developer 👩‍💻
 
@@ -323,6 +332,7 @@ npm run dev
 | Skills | Java, Python, React.js, FastAPI, MySQL, MongoDB, AI/ML, Frontend & Backend Development |
 | Hobbies | Singing 🎤, Dancing 💃, Exploring Tech Projects 🚀 |
 
+
 + Passionate about building real-world applications and constantly improving coding skills. Open to collaboration, mentorship, and new challenges!
 
 + Passionate about Full-Stack Web Development, AI/ML, and building real-world applications❤️
@@ -332,6 +342,8 @@ npm run dev
 
 
 **Turning ideas into functional, polished applications with love ❤️ and hard work ☕.**
+
+
 
 ### Contributing 🤝
 We welcome contributions!
@@ -345,6 +357,8 @@ We welcome contributions!
 - Push to branch: git push origin feature-name
 
 - Open a Pull Request
+
+
 
 #### License 📄
 MIT License - see LICENSE for details
