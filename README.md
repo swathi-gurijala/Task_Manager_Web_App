@@ -6,6 +6,8 @@
 </p>
 
 ---
+## Dashboard of the Task Manager Full-stack Web application
+![Banner](Images_of_web_app/Banner_image.png)
 
 ## 📌 Overview
 
@@ -80,7 +82,7 @@ This layered architecture ensures:
 - Scalability
 - Clean code structure
 
-![Banner](Images_of_web_app/Dashboard.png)
+![Banner](Images_of_web_app/Banner_image.png)
 
 > **A full-stack web application to manage your tasks efficiently, stay organized, and boost productivity.** 🚀  
 
@@ -277,7 +279,7 @@ Additional analytics & stats for user productivity
 
 🌟 Open to feature suggestions and contributions from the community.
 
-About the Developer 👩‍💻
+> **About the Developer 👩‍💻**
 Swathi Gurijala
 
 4th Year B.Tech AIML Student, Malla Reddy University, Hyderabad
