@@ -6,7 +6,12 @@
 </p>
 
 ---
-## Dashboard of the Task Manager Full-stack Web application
+## 🚀 Task Manager Web App
+
+[🌐 **Open Live Web App Here!**](https://task-manager-web-app-jade.vercel.app)  
+
+> Manage your tasks efficiently, stay organized, and boost productivity—all in one place! 📝✨
+
 ![Banner](Images_of_web_app/Banner_image.png)
 
 ## 📌 Overview
@@ -279,20 +284,29 @@ Additional analytics & stats for user productivity
 
 🌟 Open to feature suggestions and contributions from the community.
 
-> **About the Developer 👩‍💻**
-Swathi Gurijala
+> About the Developer 👩‍💻
+### 👩‍💻 About the Author
 
-4th Year B.Tech AIML Student, Malla Reddy University, Hyderabad
+| Name | Swathi Gurijala |
+|------|----------------|
+| Role | B.Tech (3rd Year) AIML Student & Full-Stack Developer Intern |
+| Email | swathigurijala131@gmail.com |
+| GitHub | [swathi-gurijala](https://github.com/swathi-gurijala) |
+| LinkedIn | [Swathi Gurijala](https://www.linkedin.com/in/swathi-gurijala/) |
+| Skills | Java, Python, React.js, FastAPI, MySQL, MongoDB, AI/ML, Frontend & Backend Development |
+| Hobbies | Singing 🎤, Dancing 💃, Exploring Tech Projects 🚀 |
 
-Passionate about Full-Stack Web Development, AI/ML, and building real-world applications❤️
++ Passionate about building real-world applications and constantly improving coding skills. Open to collaboration, mentorship, and new challenges!
 
-Enjoys creating intuitive UI/UX and problem-solving with code
++ Passionate about Full-Stack Web Development, AI/ML, and building real-world applications❤️
 
-Portfolio: [Add your portfolio link]
++ Enjoys creating intuitive UI/UX and problem-solving with code
+
+
 
 “Turning ideas into functional, polished applications with love ❤️ and hard work ☕.”
 
-Contributing 🤝
+### Contributing 🤝
 We welcome contributions!
 
 Fork the repo
@@ -305,5 +319,7 @@ Push to branch: git push origin feature-name
 
 Open a Pull Request
 
-License 📄
+#### License 📄
 MIT License - see LICENSE for details
+![License: All Rights Reserved](LICENSE)
+
