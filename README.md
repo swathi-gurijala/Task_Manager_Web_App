@@ -1,4 +1,4 @@
-<center> <b>🚀 Task Manager – Full Stack Web Application </b> </center>
+# 🚀 Task Manager – Full Stack Web Application
 
 <p align="center">
   <b>A modern full-stack task management application built with React.js & FastAPI</b><br/>
