@@ -9,7 +9,7 @@
 
 ## 📌 Overview
 
-Task Manager is a full-stack web application that allows users to securely manage their daily tasks with authentication, filtering, and responsive UI design.
+> **Task Manager is a full-stack web application that allows users to securely manage their daily tasks with authentication, filtering, and responsive UI design.**
 
 This project demonstrates:
 
@@ -111,8 +111,6 @@ This layered architecture ensures:
 🔗 **Frontend:** [Live App on Vercel](https://task-manager-web-app-jade.vercel.app)  
 🔗 **Backend:** [API on Render](https://task-manager-backend-tqpj.onrender.com)
 
-📹 **Demo Video / GIF:**  
-![Demo GIF](https://via.placeholder.com/800x400.gif?text=App+Demo)
 
 ---
 
@@ -170,7 +168,7 @@ This project demonstrates **authentication, CRUD operations, API integration, st
 ---
 
 ### 4️⃣ Task Card
-![Task Card](https://via.placeholder.com/600x400.png?text=Task+Card+View)
+![Task Card](Images_of_web_app/Task_Card.png)
 
 **Features:**
 - Displays **Title, Description, Status**  
@@ -184,7 +182,7 @@ This project demonstrates **authentication, CRUD operations, API integration, st
 ---
 
 ### 5️⃣ Search & Filter
-![Search Feature](https://via.placeholder.com/600x400.png?text=Search+Feature)
+![Search Feature](Images_of_web_app/Search_feature.png)
 
 **Features:**
 - Search tasks by **title** or **description**  
@@ -196,7 +194,7 @@ This project demonstrates **authentication, CRUD operations, API integration, st
 ---
 
 ### 6️⃣ Profile & Logout
-![Profile Page](https://via.placeholder.com/600x400.png?text=Profile+Page)
+![Profile Page](Images_of_web_app/logout_image.png)
 
 **Features:**
 - Displays user **email and profile info**  
@@ -282,9 +280,9 @@ Additional analytics & stats for user productivity
 About the Developer 👩‍💻
 Swathi Gurijala
 
-3rd Year B.Tech AIML Student, Malla Reddy University, Hyderabad
+4th Year B.Tech AIML Student, Malla Reddy University, Hyderabad
 
-Passionate about Full-Stack Web Development, AI/ML, and building real-world applications
+Passionate about Full-Stack Web Development, AI/ML, and building real-world applications❤️
 
 Enjoys creating intuitive UI/UX and problem-solving with code
 
