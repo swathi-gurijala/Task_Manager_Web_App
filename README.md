@@ -47,24 +47,6 @@ This project demonstrates:
 
 ---
 
-## 🛠 Tech Stack
-
-### 🎨 Frontend
-- React.js
-- React Router
-- Axios
-- Toast Notifications
-- Custom Responsive CSS
-
-### ⚙ Backend
-- FastAPI
-- SQLAlchemy ORM
-- JWT Authentication
-- Password Hashing
-- SQLite (Development Database)
-
----
-
 ## 📂 Project Structure
 
 ```
@@ -91,186 +73,237 @@ task-manager/
 └── README.md
 ```
 
----
-
-## ⚙️ Installation & Setup
-
-### 🔹 Backend Setup
-
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate      # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-
-Backend runs at:
-
-```
-http://localhost:8000
-```
-
----
-
-### 🔹 Frontend Setup
-
-```bash
-cd frontend
-npm install
-npm start
-```
-
-Frontend runs at:
-
-```
-http://localhost:3000
-```
-
----
-
-## 🔑 Environment Variables (Production Ready Setup)
-
-Create a `.env` file inside the backend folder:
-
-```
-SECRET_KEY=your_super_secret_key
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=60
-DATABASE_URL=postgresql://user:password@host:port/dbname
-```
-
-⚠️ Never commit `.env` files to GitHub.
-
----
-
-## 🔒 Security Implementation
-
-- Password hashing before storing in database
-- JWT token generation & validation
-- Protected API routes
-- Middleware-based authentication
-- CORS configuration
-- Secure token handling on frontend
-
----
-
-## 🌍 Production Deployment (Recommended)
-
-### Frontend
-- Deploy using **Vercel** or **Netlify**
-
-### Backend
-- Deploy using **Render**, **Railway**, or **Fly.io**
-- Use PostgreSQL instead of SQLite
-- Configure environment variables securely
-- Enable HTTPS
-
----
-
-## 🚀 Future Improvements
-
-- PostgreSQL for production database
-- Pagination for tasks
-- Due date reminders
-- Role-based access control
-- Task categories
-- Email notifications
-
----
-
-## 👩‍💻 Author
-
-**Swathi**  
-Full Stack Developer  
-React.js • FastAPI • JWT Authentication  
-
----
-
-## ⭐ Why This Project Stands Out
-
-✔ Clean Architecture  
-✔ Secure Authentication  
-✔ Full CRUD Implementation  
-✔ Filtering & Search Logic  
-✔ Responsive UI  
-✔ Production-Ready Structure  
-
----
-
-# 📈 Production Scaling & Architecture Note
-
-This application is designed with scalability and production-readiness in mind.
-
-## 🔄 Backend Scalability Plan
-
-For production environments:
-
-- Replace SQLite with **PostgreSQL**
-- Use **environment variables** for secrets and database credentials
-- Deploy backend using:
-  - Render
-  - Railway
-  - Fly.io
-- Enable HTTPS with a reverse proxy (e.g., NGINX)
-- Use Gunicorn + Uvicorn workers for better concurrency
-- Implement database indexing for faster task queries
-
-### Example Production Server Command:
-
-```bash
-gunicorn -k uvicorn.workers.UvicornWorker main:app
-```
-
----
-
-## 🌐 Frontend Production Setup
-
-For production:
-
-- Build optimized static files:
-
-```bash
-npm run build
-```
-
-- Deploy using:
-  - Vercel
-  - Netlify
-
-- Configure API base URL using environment variables:
-
-```
-REACT_APP_API_URL=https://your-backend-url.com
-```
-
----
-
-## 🔐 Security Enhancements for Production
-
-- Store JWT secret in environment variables
-- Use HTTPS for secure data transfer
-- Implement refresh tokens
-- Add rate limiting middleware
-- Enable CORS only for allowed domains
-
----
-
-## 🧱 Architecture Overview
-
-Frontend (React)  
-⬇  
-Axios API Calls  
-⬇  
-FastAPI Backend  
-⬇  
-SQLAlchemy ORM  
-⬇  
-PostgreSQL Database  
-
 This layered architecture ensures:
 
 - Separation of concerns
 - Maintainability
 - Scalability
 - Clean code structure
+
+![Banner](https://via.placeholder.com/1200x300.png?text=Task+Manager+Web+App)
+
+> **A full-stack web application to manage your tasks efficiently, stay organized, and boost productivity.** 🚀  
+
+---
+
+## Table of Contents
+1. [Demo](#demo)
+2. [Project Overview](#project-overview)
+3. [Features & Screenshots](#features--screenshots)
+   - [Login Page](#login-page)
+   - [Register Page](#register-page)
+   - [Dashboard](#dashboard)
+   - [Task Card](#task-card)
+   - [Search & Filter](#search--filter)
+   - [Profile & Logout](#profile--logout)
+4. [Tech Stack](#tech-stack)
+5. [Installation & Running Locally](#installation--running-locally)
+6. [Challenges & Solutions](#challenges--solutions)
+7. [Future Improvements & Plans](#future-improvements--plans)
+8. [About the Developer](#about-the-developer)
+9. [Contributing](#contributing)
+10. [License](#license)
+
+---
+
+## Demo 🎬
+
+🔗 **Frontend:** [Live App on Vercel](https://task-manager-web-app-jade.vercel.app)  
+🔗 **Backend:** [API on Render](https://task-manager-backend-tqpj.onrender.com)
+
+📹 **Demo Video / GIF:**  
+![Demo GIF](https://via.placeholder.com/800x400.gif?text=App+Demo)
+
+---
+
+## Project Overview 🏗️
+
+The **Task Manager Web App** is a full-stack application built with **React.js** (frontend) and **FastAPI** (backend).  
+
+It allows users to:  
+- Register and securely login ✅  
+- Add, edit, delete, and manage tasks efficiently  
+- Filter and search tasks  
+- View a responsive dashboard  
+- Experience **real-time feedback** with loading spinners and alerts  
+
+This project demonstrates **authentication, CRUD operations, API integration, state management, and deployment-ready features**.
+
+---
+
+## Features & Screenshots 🌟
+
+### 1️⃣ Login Page
+![Login Page](https://via.placeholder.com/600x400.png?text=Login+Page)
+
+**Features:**
+- Email & password input fields  
+- Spinner & message: “Login in progress… checking credentials” when user clicks login  
+- Successful login redirects to **Dashboard**  
+- Navigation to **Register page** if user is new  
+
+> 💡 The spinner ensures the user knows login is in progress, improving UX and reducing confusion during API response delay.
+
+---
+
+### 2️⃣ Register Page
+![Register Page](https://via.placeholder.com/600x400.png?text=Register+Page)
+
+**Features:**
+- New users can register with email & password  
+- Form validations prevent empty fields  
+- After registration, users are redirected to login automatically  
+
+> 🌟 Navigation is simple: Register → Login → Dashboard.
+
+---
+
+### 3️⃣ Dashboard
+![Dashboard](https://via.placeholder.com/800x400.png?text=Dashboard+View)
+
+**Features:**
+- Lists all tasks in card layout  
+- Users can **add**, **edit**, and **delete** tasks  
+- Real-time task updates after every action  
+- Responsive design for mobile & desktop  
+
+---
+
+### 4️⃣ Task Card
+![Task Card](https://via.placeholder.com/600x400.png?text=Task+Card+View)
+
+**Features:**
+- Displays **Title, Description, Status**  
+- Shows **Created & Updated timestamps**  
+- Action buttons: **Edit** / **Delete**  
+- Click **Edit** → Task form appears  
+- Click **Delete** → Task is removed  
+
+> 📝 Task cards provide a clear view of each task’s status and details.
+
+---
+
+### 5️⃣ Search & Filter
+![Search Feature](https://via.placeholder.com/600x400.png?text=Search+Feature)
+
+**Features:**
+- Search tasks by **title** or **description**  
+- Filter tasks by **status** or **date**  
+- Immediate results for efficient task management  
+
+> 🔍 Helps users quickly find relevant tasks without scrolling.
+
+---
+
+### 6️⃣ Profile & Logout
+![Profile Page](https://via.placeholder.com/600x400.png?text=Profile+Page)
+
+**Features:**
+- Displays user **email and profile info**  
+- **Logout button** clears token and redirects to login  
+- Session token is stored in `localStorage` for persistent login  
+
+> 🛡️ Ensures secure session management and smooth navigation.
+
+---
+
+## Tech Stack 🛠️
+
+**Frontend:**  
+- React.js (Functional Components + Hooks)  
+- Vite  
+- CSS Flexbox & Grid  
+- React Toastify for alerts & notifications  
+
+**Backend:**  
+- Python 3.12 + FastAPI  
+- PostgreSQL + SQLAlchemy ORM  
+- JWT Authentication  
+- Bcrypt for password hashing  
+- CORS middleware for API access  
+
+**Deployment:**  
+- Frontend: Vercel  
+- Backend: Render  
+
+---
+
+## Installation & Running Locally 🖥️
+
+### Clone the repository
+```bash
+git clone https://github.com/swathi-gurijala/Task_Manager_Web_App.git
+cd Task_Manager_Web_App
+Backend Setup
+cd backend
+python -m venv .venv
+# Activate environment
+# Windows
+.venv\Scripts\activate
+# Linux / Mac
+source .venv/bin/activate
+
+pip install -r requirements.txt
+uvicorn main:app --reload
+Frontend Setup
+cd frontend
+npm install
+npm run dev
+✅ Open your browser at http://localhost:5173 (or port shown in terminal) to test the app locally.
+
+Challenges & Solutions 💡
+CORS Policy Errors: Added CORSMiddleware to backend
+
+Login delay confusion: Added spinner & “Login in progress” message
+
+404 on page refresh: Added _redirects and vercel.json for proper routing
+
+Bcrypt 72-byte issue: Pinned to bcrypt 4.0.1 for Python 3.12
+
+💪 Multiple days of debugging, testing, and deployment improvements went into making this smooth and production-ready.
+
+Future Improvements & Plans 🚀
+Task priority & deadlines
+
+Real-time collaboration & shared tasks
+
+Push notifications for pending tasks
+
+Export tasks to PDF / Excel
+
+AI-powered task prioritization suggestions
+
+Dark/Light theme toggle
+
+Additional analytics & stats for user productivity
+
+🌟 Open to feature suggestions and contributions from the community.
+
+About the Developer 👩‍💻
+Swathi Gurijala
+
+3rd Year B.Tech AIML Student, Malla Reddy University, Hyderabad
+
+Passionate about Full-Stack Web Development, AI/ML, and building real-world applications
+
+Enjoys creating intuitive UI/UX and problem-solving with code
+
+Portfolio: [Add your portfolio link]
+
+“Turning ideas into functional, polished applications with love ❤️ and hard work ☕.”
+
+Contributing 🤝
+We welcome contributions!
+
+Fork the repo
+
+Create a feature branch: git checkout -b feature-name
+
+Commit your changes: git commit -m "Add new feature"
+
+Push to branch: git push origin feature-name
+
+Open a Pull Request
+
+License 📄
+MIT License - see LICENSE for details
