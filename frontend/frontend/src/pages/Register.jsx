@@ -4,6 +4,8 @@ import { registerUser } from "../api";
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [loadingText, setLoadingText] = useState("");
 
   const handleRegister = async () => {
     if (!email || !password) {
@@ -12,13 +14,27 @@ export default function Register() {
     }
 
     try {
+      setLoading(true);
+      setLoadingText("Almost there...");
+
+      setTimeout(() => {
+        setLoadingText("Registering...");
+      }, 800);
+
       await registerUser(email, password);
-      alert("Registered successfully! Please login.");
-      setEmail("");
-      setPassword("");
-      window.location.href = "/login";
+
+      setLoadingText("Registered successfully!");
+
+      setTimeout(() => {
+        setEmail("");
+        setPassword("");
+        window.location.href = "/login";
+      }, 1000);
+
     } catch (err) {
       alert(err.message || "Registration failed");
+      setLoading(false);
+      setLoadingText("");
     }
   };
 
@@ -48,11 +64,19 @@ export default function Register() {
 
         <button
           style={styles.button}
+          disabled={loading}
           onMouseOver={(e) => (e.target.style.backgroundColor = "#2ecc71")}
           onMouseOut={(e) => (e.target.style.backgroundColor = "#27ae60")}
           onClick={handleRegister}
         >
-          Register
+          {loading ? (
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div style={styles.spinner}></div>
+              <span style={{ marginLeft: "10px" }}>{loadingText}</span>
+            </div>
+          ) : (
+            "Register"
+          )}
         </button>
 
         <p style={styles.footerText}>
@@ -115,6 +139,14 @@ const styles = {
     marginTop: "15px",
     transition: "0.3s ease",
   },
+  spinner: {
+    width: "18px",
+    height: "18px",
+    border: "3px solid #fff",
+    borderTop: "3px solid transparent",
+    borderRadius: "50%",
+    animation: "spin 0.8s linear infinite",
+  },
   footerText: {
     color: "#ffffff",
     marginTop: "15px",
@@ -126,3 +158,12 @@ const styles = {
     fontWeight: "bold",
   },
 };
+
+/* Add this in your global CSS file (index.css or App.css)
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+*/
